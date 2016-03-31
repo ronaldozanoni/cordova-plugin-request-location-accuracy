@@ -94,11 +94,25 @@ RequestLocationAccuracy.prototype.ERROR_GOOGLE_API_CONNECTION_FAILED = 5;
  * @param {Integer} accuracy - The location accuracy to request defined by an integer corresponding to a REQUEST constant.
  */
 RequestLocationAccuracy.prototype.request = function(successCallback, errorCallback, accuracy) {
-	return cordova.exec(successCallback,
-		errorCallback,
-		'RequestLocationAccuracy',
-		'request',
-		[accuracy]);
+	var _this = this;
+
+	this.showing = true;
+
+	return cordova.exec(function(data){
+				_this.showing = false;
+				successCallback(data)
+			},
+			function(err) {
+				_this.showing = false;
+				errorCallback(err);
+			},
+			'RequestLocationAccuracy',
+			'request',
+			[accuracy]);
+};
+
+RequestLocationAccuracy.prototype.isShowing = function() {
+	return this.showing === true;
 };
 
 module.exports = new RequestLocationAccuracy();

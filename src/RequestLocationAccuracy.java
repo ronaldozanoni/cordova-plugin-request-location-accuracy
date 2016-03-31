@@ -418,9 +418,9 @@ public class RequestLocationAccuracy extends CordovaPlugin implements
             case ConnectionResult.SERVICE_MISSING:
                 reason = "Google Play services is missing on this device.";
                 break;
-            case ConnectionResult.SERVICE_MISSING_PERMISSION:
-                reason = "Google Play service doesn't have one or more required permissions.";
-                break;
+            // case ConnectionResult.SERVICE_MISSING_PERMISSION:
+            //     reason = "Google Play service doesn't have one or more required permissions.";
+            //     break;
             case ConnectionResult.SERVICE_UPDATING:
                 reason = "Google Play service is currently being updated on this device.";
                 break;
